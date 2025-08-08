@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 import { api } from '@/lib/api'
 import SearchBar from './SearchBar'
-import PostCard from './PostCard'
 
 export default function BlogSearch() {
   const [searchQuery, setSearchQuery] = useState('')
@@ -33,14 +32,14 @@ export default function BlogSearch() {
       {!isLoading && searchQuery && (
         <div className="mb-6">
           <p className="text-gray-600">
-            {posts.length} result{posts.length !== 1 ? 's' : ''} for "{searchQuery}"
+            {posts.length} result{posts.length !== 1 ? 's' : ''} for &quot;{searchQuery}&quot;
           </p>
         </div>
       )}
 
       {!isLoading && posts.length === 0 && searchQuery && (
         <div className="text-center py-12">
-          <p className="text-gray-600">No posts found for "{searchQuery}"</p>
+          <p className="text-gray-600">No posts found for &quot;{searchQuery}&quot;</p>
         </div>
       )}
     </div>

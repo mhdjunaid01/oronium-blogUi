@@ -40,14 +40,14 @@ export default function SearchWrapper() {
       {!isLoading && !error && searchQuery && (
         <div className="mb-6">
           <p className="text-gray-600" aria-live="polite">
-            {posts.length} result{posts.length !== 1 ? 's' : ''} for "{searchQuery}"
+            {posts.length} result{posts.length !== 1 ? 's' : ''} for &quot;{searchQuery}&quot;
           </p>
         </div>
       )}
 
       {!isLoading && !error && posts.length === 0 && searchQuery && (
         <div className="text-center py-12" role="status" aria-live="polite">
-          <p className="text-gray-600">No posts found for "{searchQuery}"</p>
+          <p className="text-gray-600">No posts found for &quot;{searchQuery}&quot;</p>
         </div>
       )}
 

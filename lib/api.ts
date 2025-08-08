@@ -1,7 +1,4 @@
-import axios from 'axios'
-import { Post, BlogResponse } from '@/types/blog'
-
-const API_BASE_URL = 'https://your-mockapi-url.mockapi.io'
+import { Post } from '@/types/blog'
 
 // Mock data for development
 const mockPosts: Post[] = [

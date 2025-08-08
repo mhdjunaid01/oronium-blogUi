@@ -250,7 +250,7 @@ export default function Header() {
             {!isLoading && (
               <div>
                 <p className="text-gray-600 mb-4">
-                  Showing results for "{searchQuery}"
+                  Showing results for &quot;{searchQuery}&quot;
                 </p>
                 
                 {posts.length > 0 ? (
@@ -261,7 +261,7 @@ export default function Header() {
                   </div>
                 ) : (
                   <div className="text-center py-8">
-                    <p className="text-gray-600">No posts found for "{searchQuery}"</p>
+                    <p className="text-gray-600">No posts found for &quot;{searchQuery}&quot;</p>
                     <p className="text-sm text-gray-500 mt-2">Try different keywords or check your spelling</p>
                   </div>
                 )}

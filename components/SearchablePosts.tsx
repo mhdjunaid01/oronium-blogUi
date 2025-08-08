@@ -5,13 +5,15 @@ import { useQuery } from '@tanstack/react-query'
 import { api } from '@/lib/api'
 import PostCard from './PostCard'
 
+import { Post } from '@/types/blog'
+
 interface SearchablePostsProps {
-  initialPosts?: any[]
+  initialPosts?: Post[]
   showSearchBar?: boolean
 }
 
-export default function SearchablePosts({ initialPosts = [], showSearchBar = false }: SearchablePostsProps) {
-  const [searchQuery, setSearchQuery] = useState('')
+export default function SearchablePosts({ initialPosts = [] }: SearchablePostsProps) {
+  const [searchQuery] = useState('')
 
   const { data: posts = initialPosts, isLoading, error } = useQuery({
     queryKey: ['posts', searchQuery],
@@ -40,14 +42,14 @@ export default function SearchablePosts({ initialPosts = [], showSearchBar = fal
       {searchQuery && (
         <div className="mb-6">
           <p className="text-gray-600">
-            {posts.length} result{posts.length !== 1 ? 's' : ''} for "{searchQuery}"
+            {posts.length} result{posts.length !== 1 ? 's' : ''} for &quot;{searchQuery}&quot;
           </p>
         </div>
       )}
 
       {posts.length === 0 && searchQuery ? (
         <div className="text-center py-12">
-          <p className="text-gray-600">No posts found for "{searchQuery}"</p>
+          <p className="text-gray-600">No posts found for &quot;{searchQuery}&quot;</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

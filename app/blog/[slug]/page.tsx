@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation'
-import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { api } from '@/lib/api'
@@ -8,13 +7,14 @@ import BlogPostContent from '@/components/BlogPostContent'
 import type { Metadata } from 'next'
 
 interface BlogPostPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
-  const post = await api.getPost(params.slug)
+  const { slug } = await params
+  const post = await api.getPost(slug)
   
   if (!post) {
     return {
@@ -58,7 +58,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = await api.getPost(params.slug)
+  const { slug } = await params
+  const post = await api.getPost(slug)
 
   if (!post) {
     notFound()
